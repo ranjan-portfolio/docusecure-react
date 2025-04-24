@@ -1,0 +1,12 @@
+:root,body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f7fa;
+}
+
+
+
+
