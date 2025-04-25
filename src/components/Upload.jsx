@@ -1,29 +1,44 @@
 import React from 'react'; 
+import { useEffect } from 'react';
+import api,{setAuthToken} from '../api';
+import { useAuth } from "react-oidc-context";
 
 const uploadFormStyle={
     marginTop: '2em',
     marginBottom: '2em'
 }
 
+
+
 const handleSubmit = (event) => {
     event.preventDefault();
     const file = event.target.file.files[0];
     const formData = new FormData();
     formData.append('file', file);
-    fetch('/upload', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-    })
-    .catch(error => {
-        console.error(error);
-    });
-}
+    
+    try {
+      const response =  api.post('/upload', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+      console.log('Upload successful:', response.data);
+    } catch (error) {
+      console.error('Upload error:', error);
+    }
+  };
+
 
 function  Upload() {
+    const auth= useAuth();
+
+    useEffect(()=>{
+        if(auth.isAuthenticated && auth.user?.access_token){
+            setAuthToken(auth.user.access_token);
+        }
+        
+    },[auth.isAuthenticated,auth.user]);
+
     return (
         <div style={uploadFormStyle}>
             <form method="post" encType="multipart/form-data" onSubmit={handleSubmit}>
