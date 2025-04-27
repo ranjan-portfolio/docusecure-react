@@ -3,24 +3,31 @@ import { useState,useEffect } from "react";
 import api,{setAuthToken} from '../api';
 import { useAuth } from "react-oidc-context";
 
-
-
 function Download(){
+
+const auth = useAuth();
+
+useEffect(() => {
+      if (!auth.isAuthenticated) {
+        auth.signinRedirect();
+      }
+      if(auth.isAuthenticated){
+        console.log("I am already authenticated at Download page")
+        setAuthToken(auth.user.id_token);
+      }
+    }, [auth]);
+  
+if (!auth.isAuthenticated) {
+      return <div>Redirecting to login...</div>;
+}
 
 const [files,setFiles]=useState([]);
 
-const auth= useAuth();
-
-useEffect(()=>{
-    if(auth.isAuthenticated && auth.user?.access_token){
-        setAuthToken(auth.user.access_token);
-    }
-    
-},[auth.isAuthenticated,auth.user]);
-
 const fetchFiles=async()=>{
     try{
-        const response=await api.get('/files');
+        console.log("async() fetchFiles is called");
+        const response=await api.get('/');
+       // console.log("response.data is ",response.data);
         setFiles(response.data);
     }catch(error){
         console.error('Error fetching files:',error);
@@ -28,6 +35,7 @@ const fetchFiles=async()=>{
 };
 
 useEffect(()=>{
+    console.log("useEffect fetchFiles is called");
     fetchFiles();
 },[]);
 

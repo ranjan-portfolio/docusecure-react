@@ -10,7 +10,7 @@ const uploadFormStyle={
 
 
 
-const handleSubmit = (event) => {
+const handleSubmit = async (event) => {
     event.preventDefault();
     const file = event.target.file.files[0];
     const formData = new FormData();
@@ -30,15 +30,21 @@ const handleSubmit = (event) => {
 
 
 function  Upload() {
-    const auth= useAuth();
+  const auth = useAuth();
 
-    useEffect(()=>{
-        if(auth.isAuthenticated && auth.user?.access_token){
-            setAuthToken(auth.user.access_token);
+  useEffect(() => {
+        if (!auth.isAuthenticated) {
+          auth.signinRedirect();
         }
-        
-    },[auth.isAuthenticated,auth.user]);
-
+        if(auth.isAuthenticated){
+          console.log("I am already authenticated at Download page")
+          setAuthToken(auth.user.id_token);
+        }
+      }, [auth]);
+    
+  if (!auth.isAuthenticated) {
+        return <div>Redirecting to login...</div>;
+  }
     return (
         <div style={uploadFormStyle}>
             <form method="post" encType="multipart/form-data" onSubmit={handleSubmit}>

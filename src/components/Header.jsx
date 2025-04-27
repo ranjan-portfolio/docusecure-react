@@ -1,8 +1,12 @@
 import React from "react";
+import { useAuth } from "react-oidc-context";
 
 function Header(){
+    const auth= useAuth();
     
     const signOutRedirect = () => {
+        console.log('Inside signoutRedirect method');
+        auth.removeUser(); 
         const clientId = "3r5u33672k7gvmvdg2b6fclq2j";
         const logoutUri = "http://localhost:5173";
         const cognitoDomain = "https://eu-west-2egz4nhv3x.auth.eu-west-2.amazoncognito.com";
