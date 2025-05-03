@@ -1,78 +1,59 @@
 import React from "react";
-import { useState,useEffect } from "react";
 import api,{setAuthToken} from '../api';
 import { useAuth } from "react-oidc-context";
+import { useState,useEffect } from "react";
+import styles from "../css/Download.module.css";
 
-function Download(){
 
-const auth = useAuth();
+function Download({files}){
+
+const auth=useAuth();
+const downloadURI=import.meta.env.VITE_API_BASE_URL;
 
 useEffect(() => {
-      if (!auth.isAuthenticated) {
-        auth.signinRedirect();
-      }
-      if(auth.isAuthenticated){
-        console.log("I am already authenticated at Download page")
+if (auth?.user?.id_token) {
         setAuthToken(auth.user.id_token);
       }
-    }, [auth]);
-  
-if (!auth.isAuthenticated) {
-      return <div>Redirecting to login...</div>;
-}
+}, [auth]);
 
-const [files,setFiles]=useState([]);
-
-const fetchFiles=async()=>{
-    try{
-        console.log("async() fetchFiles is called");
-        const response=await api.get('/');
-       // console.log("response.data is ",response.data);
-        setFiles(response.data);
-    }catch(error){
-        console.error('Error fetching files:',error);
-    }
+const downloadFiles=async(documentId)=>{
+        try{
+            const response= await api.get(`/download/${documentId}`,{
+                responseType: 'blob',
+            });
+            
+            const blob = new Blob([response.data], { type: response.headers['content-type'] });
+            const url = window.URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', 'filename.pdf'); // fallback name if not from headers
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+            window.URL.revokeObjectURL(url);
+        }catch(error){
+            console.error('Error in downloading file'+error);
+        }
 };
-
-useEffect(()=>{
-    console.log("useEffect fetchFiles is called");
-    fetchFiles();
-},[]);
-
-const tableStyle={
-        width: '100%',
-        borderCollapse: 'collapse',
-        marginTop: '1em'
-} 
-
-const thStyle={
-    padding: '0.75em',
-    borderBottom: '1px solid #ccc',
-    textAlign: 'left',
-    backgroundColor: '#f1f1f1'
-}
-
-const tdStyle={
-    padding: '0.75em',
-    borderBottom: '1px solid #ccc',
-    textAlign: 'left',
-}
 
     return(
         <div>
             <h3>Your Uploaded Files</h3>
-            <table style={tableStyle}>
-                <thead style={thStyle}>
-                    <tr>
-                        <th>Filename</th>
-                        <th>Download</th>
+            <table className={styles.tableStyle}>
+                <thead className={styles.thStyle}>
+                    <tr className={styles.trStyle}>
+                        <th className={styles.thStyle}>Filename</th>
+                        <th className={styles.thStyle}>Download</th>
                     </tr>
                 </thead>
                 <tbody>
                     {files.map((file,index)=>(
-                        <tr key={index}>
-                            <td style={tdStyle}>{file.name}</td>
-                            <td style={tdStyle}><a href="http://<<url>>/download/{file.fileId}">Download</a></td>
+                        <tr key={index} className={styles.trStyle}>
+                            <td className={styles.tdStyle}>{file.name}</td>
+                            <td className={styles.tdStyle}><a href="#" onClick={(e)=>{
+                                e.preventDefault();
+                                downloadFiles(file.fileId)
+                            } }>Download</a></td>
                         </tr>
                     ))}
                 </tbody>

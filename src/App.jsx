@@ -19,7 +19,7 @@ function App() {
     }
     if(auth.isAuthenticated && auth.user?.id_token){
       setAuthToken(auth.user?.id_token);
-     // console.log('id token:'+auth.user.id_token);
+      //console.log('id token:'+auth.user.id_token);
     }
   }, [auth.isLoading, auth.isAuthenticated]);
   

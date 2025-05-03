@@ -1,7 +1,7 @@
 import React from "react";  
 
-function WelcomeMessage() {
-  return <h1>Welcome to my website!</h1>;
+function WelcomeMessage({username}) {
+  return <h3>Welcome {username}</h3>;
 }
 
 export default WelcomeMessage;

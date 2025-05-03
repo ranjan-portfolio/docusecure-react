@@ -1,16 +1,10 @@
 import React from "react";
+import style from "../css/Footer.module.css"
 
-const footerStyle={ 
-    backgroundColor: '#007BFF',
-    color: 'white',
-    padding: '1em 1em',
-    textAlign: 'center',
-    fontSize: '1.5em'
-}
 
 function Footer(){
     return(
-        <footer style={footerStyle}>
+        <footer className={style.footerStyle}>
             © 2025 all rights reserved by ranjanabha
         </footer>
     )

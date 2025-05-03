@@ -1,0 +1,36 @@
+.logoutButtonStyle{
+    float: right;
+    background-color: #dc3545;
+    color: white;
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.headerStyle{
+    background-color: white;
+    color: black;
+    padding: 1em 2em;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+
+
+.logoContainer {
+    display: flex;
+    align-items: center;
+    gap: 1em; /* space between logo and text */
+  }
+  
+  .logo {
+    height: 32px;
+    width: 32px;
+  }
+  
+  .title {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+  }

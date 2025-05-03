@@ -1,0 +1,34 @@
+.tableStyle
+{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1em;
+
+} 
+
+.thStyle
+{
+    padding: 0.75em;
+    border-bottom: 1px solid #ccc;
+    text-align: left;
+    background-color: #007bff;
+    font-size: 1em;
+    color:cornsilk;
+}
+
+.trStyle
+{
+    padding: 0.75em;
+    text-align: left;
+    background-color: cornsilk;
+    border-color: #007bff;
+    border-width: 1em;
+}
+
+.tdStyle
+{
+    padding: 0.75em;
+    border-bottom: 1px solid #ccc;
+    text-align: left;
+    font-size: small;
+}

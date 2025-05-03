@@ -1,25 +1,41 @@
 import React from "react";
+import { useState,useEffect } from "react";
 import Upload from "./Upload";
 import Download from "./Download";
 import WelcomeMessage from "./WelcomeMessage";
+import { useAuth } from "react-oidc-context";
+import api,{setAuthToken} from '../api';
+import styles from "../css/Main.module.css";
 
-const mainStyle={
-    padding: '2em',
-    maxWidth: '800px',
-    margin: '2em',
-    backgroundColor: 'white',
-    boxShadow: '0 0 10px rgba(0,0,0,0.1)',
-    borderRadius: '8px',
-    flex: '1',
-    alignSelf: 'center'
-}
+
 
 function Main(){
-   return(
-      <main style={mainStyle}>
-        <WelcomeMessage></WelcomeMessage>
-        <Upload></Upload>
-        <Download></Download>
+
+   const auth=useAuth();
+   const [files, setFiles] = useState([]);
+
+
+   useEffect(() => {
+      if (auth?.user?.id_token) {
+        setAuthToken(auth.user.id_token);
+        fetchFiles(); // Initial load
+      }
+    }, [auth]);
+
+   const fetchFiles = async () => {
+      try {
+        const response = await api.get('/');
+        setFiles(response.data);
+      } catch (error) {
+        console.error('Error fetching files:', error);
+      }
+    };
+  
+return(
+      <main className={styles.mainStyle}>
+        <WelcomeMessage username={auth.user?.profile?.email}></WelcomeMessage>
+        <Upload onUploadSuccess={fetchFiles}></Upload>
+        <Download files={files}></Download>
       </main>
    )
 }

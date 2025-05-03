@@ -1,43 +1,30 @@
 import React from "react";
 import { useAuth } from "react-oidc-context";
+import style from "../css/Header.module.css";
 
 function Header(){
-    const auth= useAuth();
-    
-    const signOutRedirect = () => {
-        console.log('Inside signoutRedirect method');
-        auth.removeUser(); 
-        const clientId = "3r5u33672k7gvmvdg2b6fclq2j";
-        const logoutUri = "http://localhost:5173";
-        const cognitoDomain = "https://eu-west-2egz4nhv3x.auth.eu-west-2.amazoncognito.com";
-        window.location.href = `${cognitoDomain}/logout?client_id=${clientId}&logout_uri=${encodeURIComponent(logoutUri)}`;
-      };
-    
-   
 
-    const logoutButtonStyle= {
-        float: 'right',
-        backgroundColor: '#dc3545',
-        color: 'white',
-        padding: '0.5em 1em',
-        border: 'none',
-        borderRadius: '4px',
-        cursor: 'pointer'
-    }
+    const auth = useAuth();
 
-    const headerStyle={
-        backgroundColor: '#007BFF',
-        color: 'white',
-        padding: '1em 2em',
-        textAlign: 'center',
-        fontSize: '1.5em'
-    }
+    const handleLogout = () => {
+        auth.signoutRedirect({
+            extraQueryParams: {
+                client_id: __CLIENT_ID__ , 
+                redirect_uri: __REDIRECT_URI__, 
+                response_type: 'code'
+            },
+        });
+    
+    };
 
     return(
         <>
-            <header style={headerStyle}>
-                DocuSecure
-                <button style={logoutButtonStyle} onClick={signOutRedirect}>Log out</button>
+            <header className={style.headerStyle}>
+                
+                  <img src="/docusecure.svg"  alt="DocuSecure Logo" className={style.logo} />
+                  <span className={style.title}>DocuSecure</span>
+                  <button className={style.logoutButtonStyle} onClick={handleLogout}>Log out</button>
+                
             </header>
         </>
 
