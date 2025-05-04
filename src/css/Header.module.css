@@ -9,11 +9,13 @@
 }
 
 .headerStyle{
-    background-color: white;
+    background-color:white;
     color: black;
     padding: 1em 2em;
     text-align: center;
     font-size: 1.5em;
+    align-items: center;
+    gap: 1em;
 }
 
 
@@ -25,8 +27,8 @@
   }
   
   .logo {
-    height: 32px;
-    width: 32px;
+    height: 48px;
+    width: 48px;
   }
   
   .title {
