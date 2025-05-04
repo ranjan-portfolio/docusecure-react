@@ -1,12 +1,66 @@
-# React + Vite
+# DocuSecure React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**DocuSecure React** is a lightweight frontend application built using React and Vite. This project serves as the client-side interface for the DocuSecure platform, enabling secure document storage and interaction with AWS-backed services through a Spring Boot API.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- ⚛️ Modern React setup with Vite
+- 🔁 Hot Module Replacement (HMR) for fast development
+- 🧹 ESLint integration for code quality
+- 🗂 Clean and minimal project structure for scalability
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📦 Project Structure
+
+```plaintext
+docusecure-react/
+├── public/             # Static public assets
+├── src/                # Application source code
+│   ├── App.jsx         # Root React component
+│   └── main.jsx        # React entry point
+├── .gitignore          # Git ignored files
+├── eslint.config.js    # ESLint configuration
+├── index.html          # Main HTML template
+├── package.json        # Project metadata and dependencies
+├── README.md           # Project documentation
+└── vite.config.js      # Vite build configuration
+🛠️ Getting Started
+Prerequisites
+Node.js (v14 or newer)
+
+npm (v6 or newer)
+
+Installation
+
+git clone https://github.com/ranjan-portfolio/docusecure-react.git
+cd docusecure-react
+npm install
+
+Run the Development Server
+
+npm run dev
+Open your browser at http://localhost:5173 to view the app.
+
+Build for Production
+
+npm run build
+Preview Production Build
+npm run preview
+🧪 Available Scripts
+Command	Description
+npm run dev	Run the app in development mode
+npm run build	Create an optimized production build
+npm run preview	Preview the production build locally
+
+🧹 Linting
+This project uses ESLint for code linting. You can run the linter with:
+npx eslint .
+You can configure the linting rules via eslint.config.js.
+
+📄 License
+This project is licensed under the MIT License.
+
+🤝 Contributing
+Pull requests and suggestions are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
