@@ -17,8 +17,13 @@
 docusecure-react/
 ├── public/             # Static public assets
 ├── src/                # Application source code
-│   ├── App.jsx         # Root React component
-│   └── main.jsx        # React entry point
+│   ├── assets         # Root React component
+│   └── components
+|   |__css
+|   |__api.js
+|   |__App.jsx # React entry point
+|   |__App.css
+|   |__main.jsx
 ├── .gitignore          # Git ignored files
 ├── eslint.config.js    # ESLint configuration
 ├── index.html          # Main HTML template
@@ -31,7 +36,7 @@ Node.js (v14 or newer)
 
 npm (v6 or newer)
 
-Installation
+##Installation
 
 git clone https://github.com/ranjan-portfolio/docusecure-react.git
 cd docusecure-react
@@ -49,9 +54,9 @@ Preview Production Build
 npm run preview
 🧪 Available Scripts
 Command	Description
-npm run dev	Run the app in development mode
-npm run build	Create an optimized production build
-npm run preview	Preview the production build locally
+npm run dev	-->Run the app in development mode
+npm run build	-->Create an optimized production build
+npm run preview	-->Preview the production build locally
 
 🧹 Linting
 This project uses ESLint for code linting. You can run the linter with:
