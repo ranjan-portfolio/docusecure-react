@@ -1,9 +1,5 @@
 import axios from "axios";
 
-
-
-console.log( __API_BASE_URL__);
-
 const api=axios.create({
     baseURL:__API_BASE_URL__,
 })
