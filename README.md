@@ -1,89 +1,71 @@
-DocuSecure React
+# DocuSecure React
 
-DocuSecure React is a lightweight React application scaffolded with Vite, designed for rapid development and prototyping. It includes essential configurations for ESLint and supports Hot Module Replacement (HMR) for an efficient development experience.
+**DocuSecure React** is a lightweight frontend application built using React and Vite. This project serves as the client-side interface for the DocuSecure platform, enabling secure document storage and interaction with AWS-backed services through a Spring Boot API.
 
-Features
-⚡ Vite-Powered: Leverages Vite for fast bundling and development server.
+## 🚀 Features
 
-⚛️ React Integration: Pre-configured with React for building user interfaces.
+- ⚛️ Modern React setup with Vite
+- 🔁 Hot Module Replacement (HMR) for fast development
+- 🧹 ESLint integration for code quality
+- 🗂 Clean and minimal project structure for scalability
 
-🔄 Hot Module Replacement (HMR): Enables real-time updates without full page reloads.
+---
 
-🧹 ESLint Setup: Includes a basic ESLint configuration for code quality and consistency.
+## 📦 Project Structure
 
-Getting Started
+```plaintext
+docusecure-react/
+├── public/             # Static public assets
+├── src/                # Application source code
+│   ├── assets         # Root React component
+│   └── components
+|   |__css
+|   |__api.js
+|   |__App.jsx # React entry point
+|   |__App.css
+|   |__main.jsx
+├── .gitignore          # Git ignored files
+├── eslint.config.js    # ESLint configuration
+├── index.html          # Main HTML template
+├── package.json        # Project metadata and dependencies
+├── README.md           # Project documentation
+└── vite.config.js      # Vite build configuration
+🛠️ Getting Started
 Prerequisites
-Ensure you have the following installed:
+Node.js (v14 or newer)
 
-Node.js (version 14 or higher)
+npm (v6 or newer)
 
-npm (comes with Node.js)
+##Installation
 
-Installation
-Clone the repository:
-
-bash
-Copy
-Edit
 git clone https://github.com/ranjan-portfolio/docusecure-react.git
 cd docusecure-react
-Install dependencies:
-
-bash
-Copy
-Edit
 npm install
-Running the Development Server
-Start the development server with:
 
-bash
-Copy
-Edit
+Run the Development Server
+
 npm run dev
-This will launch the application at http://localhost:5173/ (default Vite port). The server supports HMR, so changes will reflect instantly without a full reload.
+Open your browser at http://localhost:5173 to view the app.
 
-Building for Production
-To create an optimized production build:
+Build for Production
 
-bash
-Copy
-Edit
 npm run build
-The output will be in the dist directory, ready for deployment.
-
-Previewing the Production Build
-To preview the production build locally:
-
-bash
-Copy
-Edit
+Preview Production Build
 npm run preview
-This serves the content from the dist directory at http://localhost:4173/.
-
-Project Structure
-php
-Copy
-Edit
-docusecure-react/
-├── public/             # Static assets
-├── src/                # Source code
-│   ├── App.jsx         # Main React component
-│   └── main.jsx        # Entry point
-├── index.html          # HTML template
-├── package.json        # Project metadata and scripts
-├── vite.config.js      # Vite configuration
-├── eslint.config.js    # ESLint configuration
-└── README.md           # Project documentation
-Scripts
+🧪 Available Scripts
 Command	Description
-npm run dev	Start the development server
-npm run build	Build the application for production
-npm run preview	Preview the production build locally
+npm run dev	-->Run the app in development mode
+npm run build	-->Create an optimized production build
+npm run preview	-->Preview the production build locally
 
-ESLint Configuration
-The project includes a basic ESLint setup to maintain code quality. You can expand this configuration by integrating additional plugins or extending existing rules as per your project's requirements.
+🧹 Linting
+This project uses ESLint for code linting. You can run the linter with:
+npx eslint .
+You can configure the linting rules via eslint.config.js.
 
-License
+📄 License
 This project is licensed under the MIT License.
 
-Feel free to customize this README.md further to include specific details about your project's functionality, deployment instructions, or any other relevant information.
+🤝 Contributing
+Pull requests and suggestions are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
