@@ -1,3 +1,5 @@
+
+<img width="781" height="481" alt="docusecure drawio" src="https://github.com/user-attachments/assets/976664c5-2cbd-42cc-b903-c0a7d17d99e2" />
 # DocuSecure React
 
 **DocuSecure React** is a lightweight frontend application built using React and Vite. This project serves as the client-side interface for the DocuSecure platform, enabling secure document storage and interaction with AWS-backed services through a Spring Boot API.
